@@ -80,7 +80,7 @@ multi_Class_Sampling <- function(in.raster,
                                  classNames,
                                  n_classes,
                                  multiTest = 1,
-                                 RGB = c(19, 20, 21)) {
+                                 RGB = c(1, 2, 3)) {
   ###first steps: data preparation
   if (class(reference) == "SpatialPointsDataFrame") {
     reference <- as.data.frame(raster::extract(in.raster, reference))
