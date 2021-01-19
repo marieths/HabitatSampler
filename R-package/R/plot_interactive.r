@@ -126,7 +126,7 @@ iplot <- function(x, y, HaTy, r, g, b, acc, outPath) {
   ##[2] Create Leaflet Html output for Webbrowser
   mv <- leaflet::leaflet()
   #addTiles(urlTemplate ='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png') %>%
-  mv <- leaflet::addProviderTiles(map = mv, "CartoDB.PositronNoLabels")
+  # mv <- leaflet::addProviderTiles(map = mv, "CartoDB.PositronNoLabels")
 
   mv <- leaflet::addRasterImage(
     map = mv,
