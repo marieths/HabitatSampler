@@ -12,7 +12,7 @@ setwd("E:/USER/")
 inPath<-"schmehl/HaSa/HabitatSampler-master/HabitatSampler_v2.0/Funktionen/"
 dataPath <- "drohnen_daten/20200921_TB/"
 #outPath <- "schmehl/HaSa/HabitatSampler-master/HabitatSampler_v2.0/test/Results/"
-outPath <- "E:/USER/schmehl/HaSa/klein1/" #absoluten Pfad angeben!!
+outPath <- "E:/USER/schmehl/HaSa/klein1/" #has to be an absolute path!
 
 ##0.3##
 dd = dir(paste0(inPath,"package_modified/"), pattern = ".r|R", full.names = T, all.files = T)
@@ -26,7 +26,7 @@ rasterOptions(tmpdir="./RasterTmp/")
 ########################################################################################
 ###load data
 a1<-brick(paste(dataPath,"20200921_I_filt1.tif",sep=""))
-a1 = a1[[-4]] #Lösche "4. Kanal" weil keine Varianz drin (alle =255)
+a1 = a1[[-4]] #remove 4th channel, no variance (all =255)
 ##1.a.2##
 cut<-readOGR("E:/USER/schmehl/test_site_I_hasa_klein.shp")
 a1<-clip(a1,cut)
@@ -103,10 +103,10 @@ classNames <- sub(pattern = "/", replacement = ".", x = shp$cover)
 
 ##2.a.1##
 init.samples = 50
-nb_models = 200 #kann zum testen auch <200 sein
+nb_models = 200 #can be <200 for code testing (10-15)
 nb_it = 10
-buffer = 0.1 #in m -> muss an Bildauflösung angepassten werden. etwas über 1 bis 2 Pixel
-mtry = 8  #muss kleiner als Anzahl kanäle sein, damit zufallsauswahl getroffen werden kann
+buffer = 0.1 #in m -> should equal the size of 1-2 pixel?
+mtry = 8  #has to be smaller, than the number of channels in order to get a random set
 init.seed = "sample"
 n_classes = 4
 
